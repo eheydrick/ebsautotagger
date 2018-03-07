@@ -103,9 +103,9 @@ resource "aws_cloudwatch_event_target" "invoke-lambda" {
 
 # permit cloudwatch event rule to invoke lambda
 resource "aws_lambda_permission" "lambda_permissions" {
-  statement_id = "AllowExecutionFromCloudWatch"
-  action = "lambda:InvokeFunction"
+  statement_id  = "AllowExecutionFromCloudWatch"
+  action        = "lambda:InvokeFunction"
   function_name = "${aws_lambda_function.ebsautotagger.function_name}"
-  principal = "events.amazonaws.com"
-  source_arn = "${aws_cloudwatch_event_rule.ebsautotagger.arn}"
+  principal     = "events.amazonaws.com"
+  source_arn    = "${aws_cloudwatch_event_rule.ebsautotagger.arn}"
 }
